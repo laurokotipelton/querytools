@@ -1,0 +1,57 @@
+Migração DB2 Astemar para SysPDV
+
+Possui cadastro de secao,grupo e subgrupo, porem não ha relação entre elas gerando problema de primary key, somente sera migrado o cadastro de seção visto que o mesmo é obrigatorio
+No banco de dados do cliente o mesmo usa um unico campo de CST para pis e cofins
+
+Levar tabela de impostos federais
+
+--saber quais os CST de PIS e COFINS
+SELECT DISTINCT(IDCSTPISCOFINSSAIDA) FROM dba.PRODUTO
+SELECT DISTINCT(IDCSTPISCOFINSENTRADA) FROM dba.PRODUTO
+
+criar um arquivo SYSPIMPFED e importar
+
+--traz os produtos com seus preços e demais informações
+
+SELECT * FROM dba.PRODUTO_GRADE pg 
+INNER JOIN DBA.PRODUTO p ON pg.IDPRODUTO = p.IDPRODUTO
+INNER JOIN DBA.POLITICA_PRECO_PRODUTO pc ON pg.IDSUBPRODUTO = pc.IDSUBPRODUTO WHERE IDEMPRESA = 1
+
+SELECT DISTINCT(TIPOSITTRIBENT) FROM DBA.PRODUTO_TRIBUTACAO_ESTADO
+
+C-Cliente; A-Cliente/Fornecedor; U-Colaborador; F-Fornecedor; M-Motorista; O-Produtivo; P-Prospect; R-Revenda/Subvendedor; T-Transportador; V-Vendedor/Canal; B-Terceiros
+
+Cadastro de fornecedor
+
+Cliente tem fornecedor com mais de 4 digitos, Syspdv so recebe 4
+
+Cliente pessoas fisicas --
+Cliente pessoas juridicas --
+Fornecedor pessoa fisica -- 7
+Fornecedor pessoa juridica -- 363
+Fornecedores = 370
+
+-- Revisar a migração do cliente Astemar
+
+Tabelas Basicas
+
+Seção / Grupo / SubGrupo
+Impostos Federais / Tributação
+Aplicação / Caracteristica / Marca / Ramo / Status / Unidade / Tipo de Documento / Encarte
+
+--Seção Grupo e Subgrupo
+
+O cadastro de seção esta ok, porem os grupos e subgrupos não tem ligação entre si, revenda deve informar o relacionamento entre esses campos para atualização.
+
+-- Tributação
+
+SELECT DISTINCT(TIPOSITTRIBSAI) AS SIMBOLOGIA,IDSITTRIBENT AS TABELA_B_ENTRADA,IDSITTRIBSAI AS TABELA_B_SAIDA,PERICMSAI AS ALIQ_SAIDA,PERICMENT AS ALIQ_ENTRADA FROM GRUPO_TRIBUTACAO_ESTADO WHERE UF = 'MT'
+
+SELECT PG.IDSUBPRODUTO,
+PG.DESCRRESPRODUTO,GT.IDGRUPO,G.DESCRGRUPO,GT.TIPOSITTRIBENT,GT.IDSITTRIBENT,
+GT.IDSITTRIBSAI,GT.PERICMSAI,GT.PERICMENT 
+FROM PRODUTO P
+INNER JOIN PRODUTO_GRADE PG ON p.IDPRODUTO = PG.IDPRODUTO
+INNER JOIN GRUPO_TRIBUTACAO_ESTADO GT ON P.IDGRUPO = GT.IDGRUPO 
+INNER JOIN GRUPO G ON P.IDGRUPO = G.IDGRUPO
+WHERE UF = 'MT' AND TIPOSITTRIBSAI IS NOT null
