@@ -4,9 +4,9 @@ DECLARE
         C VARCHAR(3);
         D DATE;
 begin
-        L := 1;
-        C := '006';
-        D := '2017-10-03';
+        L := 2;
+        C := '003';
+        D := '2017-09-16';
 
         raise notice '% - Processo iniciado.', timeofday()::timestamp;
 
@@ -25,7 +25,8 @@ begin
                 FROM
                         ESTOQUE_MOVIMENTACAO
                 WHERE
-                        MOV_TIPO='VENDA' AND
+                        MOV_TIPO='VENDA' OR
+                        MOV_TIPO='CANCELAMENTO' AND
                         LOJ_CODIGO = L AND
                         MOV_DATA =  D AND
                         SUBSTRING(MOV_HISTORICO, 14) =  C
