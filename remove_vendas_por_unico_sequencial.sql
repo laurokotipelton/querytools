@@ -5,10 +5,10 @@ DECLARE
         D DATE;
         S VARCHAR(6);
 begin
-        L := 1;
-        C := '007';
+        L := 3;
+        C := '001';
         D := '2017-09-16';
-        S := '101354';
+        S := '011037';
 
         raise notice '% - Processo iniciado.', timeofday()::timestamp;
 
@@ -20,18 +20,19 @@ begin
                     VENDA);
 
         DELETE FROM ESTATISTICA_PRODUTO_VENDA WHERE EPV_LOJCOD = L AND EPV_CXANUM = C AND EPV_TRNSEQ = S;
+        
         DELETE FROM ESTOQUE_MOVIMENTACAO WHERE MOV_ID IN (
                 SELECT
                         MOV_ID
                 FROM
                         ESTOQUE_MOVIMENTACAO
                 WHERE
-                        MOV_TIPO='VENDA' OR
-                        MOV_TIPO='CANCELAMENTO'AND
                         LOJ_CODIGO = L AND
                         MOV_DATA = D AND
-                        SUBSTRING(MOV_HISTORICO, 7) = S || '/' || C
+                        ((MOV_TIPO='VENDA' AND SUBSTRING(MOV_HISTORICO, 7) = S || '/' || C) OR
+                        (MOV_TIPO='CANCELAMENTO' AND SUBSTRING(MOV_HISTORICO, 20) = S || '/' || C))
         );
+        
         DELETE FROM TRANSACAO WHERE LOJCOD = L AND CXANUM = C AND TRNDAT = D AND TRNSEQ = S;
         DELETE FROM ITEM_VENDA WHERE LOJCOD = L AND CXANUM = C AND TRNDAT = D AND TRNSEQ = S;
         DELETE FROM FINALIZACAO WHERE LOJCOD = L AND CXANUM = C AND TRNDAT = D AND TRNSEQ = S;
