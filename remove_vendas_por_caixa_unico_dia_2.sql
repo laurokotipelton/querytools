@@ -4,9 +4,9 @@ DECLARE
         C VARCHAR(3);
         D DATE;
 begin
-        L := 2;
-        C := '003';
-        D := '2017-09-16';
+        L := 1;
+        C := '004';
+        D := '2017-09-17';
 
         raise notice '% - Processo iniciado.', timeofday()::timestamp;
 
@@ -19,19 +19,19 @@ begin
 
         DELETE FROM REDUCAO WHERE LOJCOD = L AND CXANUM =  C AND TRNDAT =  D;
         DELETE FROM ESTATISTICA_PRODUTO_VENDA WHERE EPV_LOJCOD = L AND EPV_CXANUM =  C AND EPV_DATA_VENDA =  D;
+        
         DELETE FROM ESTOQUE_MOVIMENTACAO WHERE MOV_ID IN (
                 SELECT
                         MOV_ID
                 FROM
                         ESTOQUE_MOVIMENTACAO
                 WHERE
-                        MOV_TIPO='VENDA' OR
-                        MOV_TIPO='CANCELAMENTO' AND
                         LOJ_CODIGO = L AND
-                        MOV_DATA =  D AND
-                        SUBSTRING(MOV_HISTORICO, 14) =  C
+                        MOV_DATA = D AND
+                        ((MOV_TIPO='VENDA' AND SUBSTRING(MOV_HISTORICO, 14, 3) = C) OR
+                        (MOV_TIPO='CANCELAMENTO' AND SUBSTRING(MOV_HISTORICO, 27, 3) = C))
         );
-        
+  
         DELETE FROM ITEM_VENDA WHERE LOJCOD = L AND CXANUM =  C AND TRNDAT =  D ;
         DELETE FROM FINALIZACAO WHERE LOJCOD = L AND CXANUM =  C AND TRNDAT =  D;
         DELETE FROM TRANSACAO WHERE LOJCOD = L AND CXANUM =  C AND TRNDAT =  D;

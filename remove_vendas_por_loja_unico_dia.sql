@@ -5,7 +5,7 @@ DECLARE
         D DATE;
 begin
         L := 1;
-        D := '2017-09-01';
+        D := '2017-09-04';
 
         RAISE NOTICE '% - PROCESSO INICIADO.', timeofday()::timestamp;
 
@@ -24,10 +24,9 @@ begin
                 FROM
                         ESTOQUE_MOVIMENTACAO
                 WHERE
-                        MOV_TIPO='VENDA' OR
-                        MOV_TIPO='CANCELAMENTO' AND
                         LOJ_CODIGO = L AND
-                        MOV_DATA = D 
+                        MOV_DATA = D AND
+                        (MOV_TIPO='VENDA' OR MOV_TIPO='CANCELAMENTO')
         );
 
         DELETE FROM TRANSACAO WHERE LOJCOD = L AND TRNDAT = D;
