@@ -22,7 +22,7 @@ Menu(){
   echo "[ 5 ] Permissão em arquivos"
   echo "[ 6 ] Inciar o Pentaho"
   echo "[ 7 ] Operações em banco de dados"
-  echo "[ 8 ] Exclusão de vendas" 
+  echo "[ 8 ] Vfcli - Panama" 
   echo "[ 9 ] Alterações varejofacil"
   echo "[ 0 ] Sair"
   echo
