@@ -1,0 +1,11 @@
+delete from estoque_movimentacao;
+delete from item_pedido_compra_atendido; 
+delete from item_pedido_compra;  
+delete from item_nota_fiscal; 
+delete from nota_fiscal; 
+delete from item_tabela_tributacao;
+delete from tabela_tributacao; 
+delete from situacao_fiscal;
+update pessoa_loja set fig_codigo = null;
+delete from figura_fiscal;
+update produto set stf_codigo = null, stf_codigo_saida = null;
