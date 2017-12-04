@@ -58,7 +58,7 @@ SELECT cria_sequence('CONTATO', 'CONT_CODIGO', 'SQ_CONTATO');
 SELECT cria_sequence('CONTRATO_LOCACAO_ESPACO', 'CON_CODIGO', 'SQ_CONTRATO_LOCACAO_DE_ESPACO');
 SELECT cria_sequence('CONVENIO', 'CON_ID', 'SQ_CONVENIO');
 SELECT cria_sequence('criterio_local_estoque', 'cleid' ,'sq_criterio_local_estoque');
---SELECT cria_sequence('sq_ct_nota');?
+SELECT cria_sequence('CONHECIMENTO_TRANSPORTE_NOTA','ctn_codigo','sq_ct_nota');
 SELECT cria_sequence('CUPOM_ITEM_NOTA', 'CIN_ID', 'SQ_CUPOM_ITEM_NOTA');
 SELECT cria_sequence('DEPENDENTE', 'DEP_ID', 'SQ_DEPENDENTE');
 SELECT cria_sequence('detalhe_configuracao_comissao', 'dcg_id' ,'sq_detalhe_config_comissao');
@@ -150,7 +150,7 @@ SELECT cria_sequence('LOG_IMPORTACAO_ECOM', 'ID', 'SQ_LOG_IMPORTACAO_ECOM');
 SELECT cria_sequence('loja_pagamento_pdv', 'plj_id' ,'sq_loja_pagamento_pdv');
 SELECT cria_sequence('loja_recebimento_pdv', 'ljr_id' ,'sq_loja_recebimento_pdv');
 SELECT cria_sequence('MOTIVO_DEVOLUCAO', 'MDV_CODIGO', 'SQ_MOTIVO_DEVOLUCAO');
---SELECT cria_sequence('sq_mov_custo_dia'); ?
+SELECT cria_sequence('CUSTO_DIA','cd_id','sq_mov_custo_dia');
 --SELECT cria_sequence('MOVIMENTACAO_ESTOQUE_PENDENTE', 'MEP_ID', 'SQ_MOV_ESTOQUE_PENDENTE');
 SELECT cria_sequence('MOVIMENTACAO_CATEGORIA', 'MCAT_ID', 'SQ_MOVIMENTACAO_CATEGORIA');
 SELECT cria_sequence('MOVIMENTACAO_DE_CUSTO', 'MOC_ID', 'SQ_MOVIMENTACAO_CUSTO');
