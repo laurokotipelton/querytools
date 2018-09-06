@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Formulario de Migração</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css"/>
+</head>
+<body>
+    <center><h1>Formulario de Migração de Dados</h1></center>
+    <br>
+    <form action="#" method="post">
+            <fieldset>
+                <fieldset class="grupo">
+                    <center><h2>Dados da Revenda</h2></center>
+                    <br>
+                    <div class="campo">
+                        <label for="nome">Nome da Revenda</label>
+                        <input type="text" id="nome" name="nome" style="width: 20em" value="">
+                    </div>
+                    <div class="campo">
+                        <label for="cnpj">CNPJ</label>
+                        <input type="text" id="cnpj" name="cnpj" style="width: 10em" value="">
+                    </div>
+                    <div class="campo">
+                        <label for="contato">Contato Tecnico</label>
+                        <input type="text" id="contato" name="contato" style="width: 15em" value="">
+                    </div>
+                    <div class="campo">
+                        <label for="telefone">Telefone</label>
+                        <input type="text" id="telefone" name="telefone" style="width: 10em" value="">
+                    </div>
+                    <div class="campo">
+                        <label for="email">E-mail</label>
+                        <input type="text" id="email" name="email" style="width: 15em" value="">
+                    </div>
+                </fieldset>
+                <fieldset class="grupo">
+                    <center><h2>Dados do Cliente</h2></center>
+                    <br>
+                    <div class="campo">
+                        <label for="razao">Razão Social</label>
+                        <input type="text" id="razao" name="razao" style="width: 20em" value="">
+                    </div>
+                    <div class="campo">
+                        <label for="fantasia">Fantasia</label>
+                        <input type="text" id="fantasia" name="fantasia" style="width: 20em" value="">
+                    </div>
+                    <div class="campo">
+                        <label for="cnpj">CNPJ</label>
+                        <input type="text" id="cnpj" name="cnpj" style="width: 10em" value="">
+                    </div>
+                    <div class="campo">
+                        <label for="linkvarejofacil">Link do Varejofacil</label>
+                        <input type="text" id="linkvarejofacil" name="linkvarejofacil" style="width: 15em" value="">
+                    </div>
+                    <div class="campo">
+                        <label for="numeroloja">Numero da Loja</label>
+                        <input type="text" id="numeroloja" name="numeroloja" style="width: 5em" value="">
+                    </div>
+                </fieldset>
+                <fieldset class="grupo">
+                    <center><h2>Informações da Migração</h2></center>
+                    <br>
+                    <div class="campo">
+                        <label for="sorigem">Sistema de Origem</label>
+                        <input type="text" id="sorigem" name="sorigem" style="width: 15em" value="">
+                    </div>
+                    <div class="campo">
+                        <label for="tbanco">Tipo de Banco de Dados</label>
+                        <input type="text" id="tbanco" name="tbanco" style="width: 15em" value="">
+                    </div>
+                    <div class="campo">
+                        <label for="linkdownload">Link do Arquivo para Download</label>
+                        <input type="text" id="linkdownload" name="linkdownload" style="width: 40em" value="">
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <center><h2>Dados a Serem Migrados (Marcar as Informações)</h2></center>
+                    <div class="campo">
+                        <h3>Cadastro de Produto</h3>
+                        <table cellspacing="5" cellpadding="5">
+                            <tr>
+                                <td><input type="checkbox" name="secao" value="secao"> Seção </td>
+                                <td><input type="checkbox" name="preco" value="preco"> Preço </td>
+                                <td><input type="checkbox" name="impfedprod" value="impfedprod"> Impostos Federais do Produto </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" name="grupo" value="grupo"> Grupo</td>
+                                <td><input type="checkbox" name="compostos" value="compostos"> Compostos</td>
+                                <td><input type="checkbox" name="ean" value="ean"> Codigo Auxiliar (EAN)</td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" name="subgrupo" value="subgrupo"> Sub-Grupo</td>
+                                <td><input type="checkbox" name="kit" value="kit"> Kit</td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" name="tributacao" value="tributacao"> Tributação</td>
+                                <td><input type="checkbox" name="encarte" value="encarte"> Encarte</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="campo">
+                        <h3>Cadastro de Cliente</h3>
+                        <table cellspacing="5" cellpadding="5">
+                            <tr>
+                                <td><input type="checkbox" name="cliente" value="cliente"> Cadastro de Clientes </td>
+                                <td><input type="checkbox" name="limite" value="limite"> Limite de Credito </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="campo">
+                        <h3>Cadastro de Fornecedor</h3>
+                        <table cellspacing="5" cellpadding="5">
+                            <tr>
+                                <td><input type="checkbox" name="fornecedor" value="fornecedor"> Cadastro de Fornecedor </td>
+                                <td><input type="checkbox" name="prodreffor" value="prodreffor"> Codigo de Referencia do Fornecedor</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="campo">
+                        <h3>Outros Cadastros</h3>
+                        <table cellspacing="5" cellpadding="5">
+                            <tr>
+                                <td><input type="checkbox" name="loja" value="loja"> Dados Cadastrais da loja </td>
+                                <td><input type="checkbox" name="funcionario" value="funcionario"> Cadastro de Funcionarios</td>
+                                <td><input type="checkbox" name="serienota" value="serienota"> Serie Nota Fiscal</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="campo">
+                        <h3>Financeiro</h3>
+                        <table cellspacing="5" cellpadding="5">
+                            <tr>
+                                <td><input type="checkbox" name="agentefinanceiro" value="agentefinanceiro"> Agente Financeiro </td>
+                                <td><input type="checkbox" name="contacorrente" value="contacorrente"> Conta Corrente </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" name="titulosapagar" value="titulosapagar"> Titulos a Pagar em Aberto </td>
+                                <td><input type="checkbox" name="titulosareceber" value="titulosareceber"> Titulos a Receber em Aberto e Parcialmente Liquidados </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="campo">
+                        <h3>Movimentação</h3>
+                        <table cellspacing="5" cellpadding="5">
+                            <tr>
+                                <td><input type="checkbox" name="estoque" value="estoque"> Saldo Atual de Estoque</td>
+                                <td><input type="checkbox" name="custo" value="custo"> Movimentação de Custo</td>
+                            </tr>
+                        </table>
+                    </div>
+                </fieldset>
+                <h2>Informações Adicionais</h2>
+                <br>
+                <div class="campo">
+                    <label for="observacao">Observação</label>
+                    <textarea rows="6" style="width: 77em" id="observacao" name="observacao"></textarea>
+                </div>
+                <button type="submit" name="submit">Enviar</button>
+            </fieldset>
+        </form>
+    <script src="js/principal.js"></script>
+</body>
+</html>
